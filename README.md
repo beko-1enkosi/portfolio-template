@@ -68,6 +68,8 @@ The portfolio provides a separately composed mobile narrative rather than just s
 
 This portfolio is an **adaptation of the open-source [portfolio-template by Nidhi Prajapati (SomehowLiving)](https://github.com/SomehowLiving/portfolio-template)**. The original project provided the foundation for the interactive thread narrative, cursor interactions and page structure. I adapted and extended it with my own personal story, projects, milestone galleries, visual assets, styling and contact details.
 
+Additional visual inspiration came from [Nik's portfolio at coolestdesigner.com](https://coolestdesigner.com). Both creators are credited for their contributions and inspiration; Bekolenkosi is my customised adaptation, not a project built entirely from scratch.
+
 Many thanks to Nidhi for making the source available. The original repository is MIT licensed; its license and attribution should be retained where applicable. **Source-code licensing does not automatically grant rights to reuse original personal photos, writing, artwork or project screenshots.** Any such assets should be replaced with my own or used only with permission.
 
 ## Contact
