@@ -8,10 +8,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { Analytics } from "@vercel/analytics/react";
 import { type ReactNode } from "react";
 
-import { ABOUT_SHORT, NAME, OG_IMAGE } from "../lib/seo";
+import { ABOUT_SHORT, NAME } from "../lib/seo";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -71,11 +70,6 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
-// Cloudflare Web Analytics: cookie-free page views. Paste the site token from
-// Cloudflare dashboard → Analytics & Logs → Web Analytics → Add a site. Left
-// empty, nothing loads; it also stays off in local dev so tests don't count.
-const CLOUDFLARE_ANALYTICS_TOKEN = "c2af4919f63345baa09829e9eb47b240";
-
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -87,11 +81,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "robots", content: "index, follow, max-image-preview:large" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: NAME },
-      { property: "og:locale", content: "en_IN" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:locale", content: "en_ZA" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:creator", content: "@pnyk05" },
-      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:creator", content: "@bekolenkosi_" },
     ],
     links: [
       {
@@ -110,19 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/bekolenkosi-favicon.svg?v=2",
         type: "image/svg+xml",
       },
-
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
-    scripts:
-      CLOUDFLARE_ANALYTICS_TOKEN && import.meta.env.PROD
-        ? [
-            {
-              src: "https://static.cloudflareinsights.com/beacon.min.js",
-              defer: true,
-              "data-cf-beacon": JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN }),
-            },
-          ]
-        : [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -151,8 +131,6 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      {/* Vercel Web Analytics: cookie-free page views, sent only from the live site. */}
-      <Analytics />
     </QueryClientProvider>
   );
 }
