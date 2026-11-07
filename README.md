@@ -1,67 +1,84 @@
-# nidhi — the anatomy of a curious developer
+# Bekolenkosi. — a curious developer's portfolio
 
-**Live:** [somehowliving.tech](https://www.somehowliving.tech)
+A personal portfolio for **Thobeka Nkosi**, bringing together software engineering, life sciences, creative experimentation, and the things that keep me curious.
 
-My personal portfolio: a story told along a single hand-drawn thread.
+The site follows a hand-drawn thread through my story, selected projects, milestones, and a little about the person behind the code. It is designed as a horizontal, animated experience on desktop and a vertically told story on mobile.
 
-It starts as a tangled scribble ("an almost accurate map of everything on my mind"). As you scroll, the thread wanders through the things I tinker with, the few that have my heart, the years so far, and the loop I keep repeating, then hands you over to the work. "More rabbit holes" drops you through a black hole into everything else I've built, and at the very end the thread lands in my raised hand.
+## Explore
 
-- **Laptop:** the story scrolls sideways. The thread draws itself as you go, objects talk when you hover them, the climber follows your cursor along the thread, and the cutout at the end stretches when you drag it.
-- **Mobile:** the same story told vertically, with the thread weaving down the page, objects that talk when tapped, and a climber you can drag along the thread.
+- **About:** A playful visual story of my path from Biochemistry and Physiology to software engineering.
+- **Projects:** Selected work across data, Java, microservices, and health technology.
+- **Milestones:** Certificates, hackathon achievements, and events where I showed up to learn.
+- **Let's talk:** Contact links, a downloadable CV, and one small fun fact.
 
-Designed and built from scratch. Inspired by [coolestdesigner.com](https://coolestdesigner.com/).
+## Selected projects
 
----
+| Project | What it explores | Repository |
+| --- | --- | --- |
+| **AirAtlas** | Environmental observations, data transformation and an interactive air-quality platform | [AirAtlas](https://github.com/beko-1enkosi/airatlas) |
+| **Robot Worlds** | Java, OOP, networking, threads and multiplayer simulation | [Robot Worlds](https://github.com/beko-1enkosi/robot-world) |
+| **HealthSafe** | Java microservices, REST, ActiveMQ, Docker Compose and Kubernetes | [HealthSafe](https://github.com/beko-1enkosi/sin-000-healthsafe) |
+| **BeyondPink & Brea** | Breast-health education, support, accessibility and inclusive design | [BeyondPink & Brea](https://github.com/beko-1enkosi/beyond-pink) |
 
-## A note from me
+**Note:** HealthSafe's portfolio cover is a conceptual illustration of a proposed operations dashboard, not a screenshot of a deployed frontend. The completed system showcased in its repository is the backend and local infrastructure.
 
-A lot of people have asked how I built this, so here's the honest answer: **the code was the easy part.**
+## Tech stack
 
-These days it doesn't really matter whether you know how to code. What matters is knowing *what* you're building and *why*: the purpose behind it, the value you're trying to give, and how people will feel when they meet it. Human psychology, how people think, what makes them stay — that's one of the most important things to understand right now.
+- **Framework:** TanStack Start, TanStack Router, React, TypeScript
+- **Styling:** Tailwind CSS
+- **Animation:** Custom SVG paths, CSS transitions and `requestAnimationFrame`
+- **Build tooling:** Vite, Nitro
+- **Icons:** Lucide and React Icons
 
-So before you open an editor, I'd highly suggest you **first think through what you want to be perceived as**, and how. Nobody is going to count your stars. Everyone is an "AI engineer" or a "developer" now, so that alone isn't what sets you apart. What does is knowing what you're doing, building it with intent, and presenting it in a way that fits who you are. That does the job.
+## Run locally
 
-One more thing I keep noticing: people jump straight to prompting. I get it, AI is really, really powerful (maybe I'm just old). But we've reached the point where people take a prompt from GPT and paste it into Claude. That's still effort, and that's wonderful, but where's the effort from *your* end? Sketch it. Scribble it. Put some of your own creativity in before you hand it over. You'll see wonderful results.
+**Requirements:** A recent version of Node.js and npm.
 
-This site is my whole personality, thread and all. If it sparks something in you, I'd genuinely love to see yours: your story, your quirks, your weird little details. Send it my way at [nidhiyp05@gmail.com](mailto:nidhiyp05@gmail.com) or tag me on [X](https://x.com/pnyk05).
-
----
-
-## How it came together
-
-1. **Started with the feeling, not the layout.** I wanted the site to feel like my head: messy, curious, and connected by one thread.
-2. **Wrote the story before the page.** Brain → rabbit holes → the few things that have my heart → the years → "apparently, I don't know how to leave things alone" → the work → oh, hi. Each part answers one question about me, in my own voice.
-3. **Made the thread the system.** Everything hangs off it: objects sit along it, the timeline grows from it, the loop is tied in it, it ends at the work button and later in my hand. One idea, used everywhere, is what makes it feel designed.
-4. **Sketched, storyboarded, then built.** I made mockups and storyboards (the rabbit-hole fall had a 12-frame storyboard), built it with AI as a pair, and threw away a lot. Doodles, swirls, black holes, more doodles. Most attempts didn't make it. That's the process.
-5. **Sweated the small things.** Objects that talk back when you hover them. A climber you can drag along the thread. A cutout of me you can stretch, who gets annoyed. A cursor that only speaks when it has something to say. None of it is necessary; all of it is the point.
-6. **Then made it real.** A phone version told vertically, not shrunk. Performance work (the page once froze for 11 seconds on load). SEO, structured data and `llms.txt` so search and AI engines understand it.
-
-## What it's built with
-
-- [TanStack Start](https://tanstack.com/start) (React 19 + TanStack Router), TypeScript
-- Vite, Tailwind CSS 4
-- Animation is hand-written: SVG paths for the threads, `requestAnimationFrame` for the scroll story, CSS for reveals. No animation libraries.
-- Deployed on [Vercel](https://vercel.com)
-
-## Where things live
-
-- `src/routes/index.tsx`: the home page (story, work, ending)
-- `src/routes/work.tsx`: all the work, reached by falling down the rabbit hole
-- `src/components/rabbit-hole.tsx`: the fall and the climb back out
-- `src/styles.css`: theme tokens and animations
-- `src/assets/`: the 3D objects, project screenshots and the cutout
-
-## Run it locally
-
-```sh
-bun install   # or npm install
-bun run dev   # or npm run dev
+```bash
+npm install
+npm run dev
 ```
 
-## Make it yours
+Open the local URL printed by Vite (normally `http://localhost:3000`).
 
-Fork it, run it, and turn it into your own story. The code is [MIT-licensed](LICENSE); my photos, story and project screenshots aren't, so swap in yours. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to adapt it, report a bug, or suggest an improvement, and show me what you build.
+For a production build:
+
+```bash
+npm run build
+```
+
+## Project structure
+
+```text
+public/
+  cv/                  # Downloadable CV
+  bekolenkosi-favicon.svg
+src/
+  assets/bekolenkosi/  # Custom portfolio imagery
+  components/          # Reusable components and milestones
+  routes/              # Portfolio pages and root document
+  lib/                 # Metadata and utilities
+```
+
+## Accessibility and responsiveness
+
+The portfolio provides a separately composed mobile narrative rather than just shrinking the desktop layout. Images have descriptive alternative text, interactive elements have labels, and the navigation adapts for smaller screens.
+
+## Inspiration, attribution and licensing
+
+This portfolio is an **adaptation of the open-source [portfolio-template by Nidhi Prajapati (SomehowLiving)](https://github.com/SomehowLiving/portfolio-template)**. The original project provided the foundation for the interactive thread narrative, cursor interactions and page structure. I adapted and extended it with my own personal story, projects, milestone galleries, visual assets, styling and contact details.
+
+Many thanks to Nidhi for making the source available. The original repository is MIT licensed; its license and attribution should be retained where applicable. **Source-code licensing does not automatically grant rights to reuse original personal photos, writing, artwork or project screenshots.** Any such assets should be replaced with my own or used only with permission.
 
 ## Contact
 
-[nidhiyp05@gmail.com](mailto:nidhiyp05@gmail.com) · [LinkedIn](https://www.linkedin.com/in/nidhi-prajapati-5b4483248/) · [GitHub](https://github.com/SomehowLiving) · [X](https://x.com/pnyk05)
+- [Email](mailto:t2bnkosi@gmail.com)
+- [GitHub](https://github.com/beko-1enkosi)
+- [LinkedIn](https://www.linkedin.com/in/thobeka-nkosi-217640293)
+- [Instagram](https://www.instagram.com/bekolenkosi_/)
+- [Discord](https://discord.com/users/1419406774834036756)
+- [X](https://x.com/bekolenkosi_)
+
+---
+
+Made with curiosity. © 2026 Thobeka Nkosi for original content and custom assets.

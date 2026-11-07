@@ -1,40 +1,75 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { SiGmail, SiGithub, SiDiscord, SiInstagram } from "react-icons/si";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
 
-import badminton from "@/assets/obj3d-badminton.webp";
-import astronaut from "@/assets/obj3d-astronaut.webp";
+import stethoscope from "@/assets/bekolenkosi/doctor-stethoscope.png";
 import brain from "@/assets/obj3d-brain.webp";
-import camera from "@/assets/obj3d-camera.webp";
-import cat from "@/assets/obj3d-cat.webp";
 import climber from "@/assets/obj3d-climber.webp";
-import globe from "@/assets/obj3d-globe.webp";
-import headphones from "@/assets/obj3d-headphones.webp";
-import keys from "@/assets/obj3d-keys.webp";
-import me from "@/assets/me.webp";
+import scienceBeaker from "../assets/bekolenkosi/science-petri-dish.png";
+import me from "@/assets/bekolenkosi/thobeka-cutout.png";
 import laptop from "@/assets/obj3d-laptop.webp";
-import rexImage from "@/assets/project-rex.webp";
-import screenmeshImage from "@/assets/project-screenmesh.webp";
-import voxieImage from "@/assets/project-voxie.webp";
-import { CLIMBED_OUT, RabbitHoleButton, takeFlag } from "@/components/rabbit-hole";
+
+
+import Milestones from "@/components/Milestones";
+
+import airatlasImage from "@/assets/bekolenkosi/projects/airatlas.png";
+import robotWorldsImage from "@/assets/bekolenkosi/projects/robot-worlds.png";
+import healthsafeImage from "@/assets/bekolenkosi/projects/healthsafe.png";
+import beyondPinkImage from "@/assets/bekolenkosi/projects/beyondpink.png";
+
+import beyondPlant from "@/assets/bekolenkosi/beyond-plant.png";
+import bekoKeys from "@/assets/bekolenkosi/bekolenkosi-programming-keycaps.png";
+import beyondShoes from "@/assets/bekolenkosi/beyond-running-shoes.png";
+import beyondMangaBooks from "@/assets/bekolenkosi/beyond-manga-books.png";
+import thobekaNoteCards from "@/assets/bekolenkosi/thobeka-note-cards.png";
+
+
+import { CLIMBED_OUT, takeFlag } from "@/components/rabbit-hole";
 import { Button } from "@/components/ui/button";
-import { jsonLd, pageMeta, person, SITE_URL } from "@/lib/seo";
+import { jsonLd } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    ...pageMeta({
-      title: "Nidhi Prajapati — software engineer building AI agents & web3",
-      description:
-        "Nidhi Prajapati is a Bengaluru-based software engineer building AI agents, voice AI and privacy-first web3 tools. AI agent reliability at Emergent (YC24). Voxie, REX, Inscribe, ScreenMesh, Onkey.",
-      path: "/",
-    }),
+    meta: [
+      { title: "Thobeka Nkosi | Bekolenkosi — Software Engineer" },
+      {
+        name: "description",
+        content:
+          "Explore Bekolenkosi, the portfolio of Thobeka Nkosi, a software engineer with a background in Life Sciences. Projects spanning Java, AI, cloud infrastructure, data, and health technology.",
+      },
+      { property: "og:title", content: "Thobeka Nkosi | Bekolenkosi" },
+      {
+        property: "og:description",
+        content: "Software, science, and curiosity. Explore projects, little victories, and what I'm building next.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Thobeka Nkosi | Bekolenkosi" },
+      {
+        name: "twitter:description",
+        content: "Software, science, and curiosity. A portfolio by Thobeka Nkosi.",
+      },
+    ],
     scripts: [
       jsonLd({
         "@graph": [
-          person,
-          { "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: SITE_URL, name: "Nidhi Prajapati", publisher: { "@id": `${SITE_URL}/#person` } },
-          { "@type": "ProfilePage", url: SITE_URL, name: "Nidhi Prajapati — the anatomy of a curious developer", mainEntity: { "@id": `${SITE_URL}/#person` } },
+          {
+            "@type": "Person",
+            "@id": "#person",
+            name: "Thobeka Nkosi",
+            alternateName: "Bekolenkosi",
+            description: "Software engineer with a background in Biochemistry and Physiology.",
+            sameAs: [LINKS.linkedin, LINKS.github, LINKS.instagram, LINKS.x],
+          },
+          { "@type": "WebSite", name: "Bekolenkosi — Thobeka Nkosi" },
+          {
+            "@type": "ProfilePage",
+            name: "Thobeka Nkosi — Software Engineer",
+            mainEntity: { "@id": "#person" },
+          },
         ],
       }),
     ],
@@ -42,12 +77,16 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-const EMAIL = "nidhiyp05@gmail.com";
+const EMAIL = "t2bnkosi@gmail.com";
+
 const LINKS = {
-  linkedin: "https://www.linkedin.com/in/nidhi-prajapati-5b4483248/",
-  github: "https://github.com/SomehowLiving",
-  x: "https://x.com/pnyk05",
+  linkedin: "https://www.linkedin.com/in/thobeka-nkosi-217640293",
+  github: "https://github.com/beko-1enkosi",
+  discord: "https://discord.com/users/1419406774834036756",
+  instagram: "https://www.instagram.com/bekolenkosi_/",
+  x: "https://x.com/bekolenkosi_",
 };
+
 
 // The cursor's comment bubble stays quiet until something has a reason to
 // speak: a moment in the story, or hovering something that has a comment.
@@ -61,11 +100,60 @@ const say = (id: string, text: string, fade = true) => {
 };
 
 // The image opens the live site; the arrow opens the code.
+
+
 const projects = [
-  { number: "01", title: "Voxie", image: voxieImage, tags: ["AI", "Open source"], blurb: "voice agents that speak your caller's language: 17 languages, real barge-in, open source.", live: "https://voxieai.vercel.app/", code: "https://github.com/SomehowLiving/Voxie" },
-  { number: "02", title: "REX by Softknock", image: rexImage, tags: ["AI", "Product"], blurb: "follows up every failed payment, by email, text and a friendly call, in your customer's own language.", live: "https://softknockai.vercel.app/", code: "https://github.com/SomehowLiving/rex.ai" },
-  { number: "03", title: "ScreenMesh", image: screenmeshImage, tags: ["Privacy", "Open source"], blurb: "move work between your devices without moving it through an app you don't trust. local-first, end-to-end encrypted.", live: "https://screenmesh.vercel.app/", code: "https://github.com/SomehowLiving/screenmesh" },
+  {
+    number: "01",
+    title: "AirAtlas",
+    image: airatlasImage,
+    tags: ["Data", "Python", "FastAPI", "React", "DuckDB", "ETL"],
+    blurb:
+      "An environmental data platform bringing South Africa's air quality and weather observations together in one place.",
+    code: "https://github.com/beko-1enkosi/airatlas",
+  },
+  {
+    number: "02",
+    title: "Robot Worlds",
+    image: robotWorldsImage,
+    tags: ["Java", "OOP", "Sockets", "Threads", "Multiplayer"],
+    blurb:
+      "A multiplayer robot combat simulation built around object-oriented programming, networking, and a little friendly competition.",
+    code: "https://github.com/beko-1enkosi/robot-world",
+  },
+  {
+    number: "03",
+    title: "HealthSafe",
+    image: healthsafeImage,
+    tags: [
+      "Java",
+      "Microservices",
+      "Docker",
+      "Kubernetes",
+      "ActiveMQ",
+      "REST APIs",
+    ],
+    blurb:
+      "A hospital operations backend built from five Java microservices, integrating ward data, staffing calculations, and equipment alerts through REST APIs and ActiveMQ. Containerised with Docker and orchestrated using Kubernetes.",
+    code: "https://github.com/beko-1enkosi/sin-000-healthsafe",
+  },
+  {
+    number: "04",
+    title: "BeyondPink & Brea",
+    image: beyondPinkImage,
+    tags: [
+      "HealthTech",
+      "React",
+      "TypeScript",
+      "Accessibility",
+      "Education",
+    ],
+    blurb:
+      "An inclusive breast health education and support platform, bringing together science, technology, and community.",
+    code: "https://github.com/beko-1enkosi/beyond-pink",
+  },
 ];
+
 
 // The story canvas is CANVAS_VW wide and slides CANVAS_TRAVEL_VW across the
 // scroll. Everything on it is placed in vw/vh, and the SVG uses a viewBox of
@@ -178,7 +266,8 @@ let threadSamples: ThreadSamples | null = null;
 const getThreadSamples = () => (threadSamples ??= sampleSegments(threadSegments(THREAD_WAYPOINTS)));
 
 // A deliberately messy scribble ball — "an almost accurate map of everything on
-// my mind." It draws itself once on load before the rest of the page appears.
+// my mind." It draws itself once on load before the rest of the page 
+// ars.
 const TANGLE = "M412 441 C515 397 634 254 612 324 C514 323 496 516 405 384 C462 554 503 411 563 536 C550 451 352 221 429 252 C463 251 542 590 592 462 C722 444 518 320 633 498 C733 324 559 351 502 325 C451 436 535 231 665 369 C653 189 542 154 453 252 C356 135 579 427 545 447 C580 505 551 553 468 379 C518 265 542 377 549 499 C417 489 679 300 622 421 C560 362 446 473 393 465 C424 562 372 482 401 372 C511 215 515 477 398 393 C299 375 474 580 439 424 C406 450 754 502 668 389 C754 375 628 135 588 240 C647 360 527 578 489 496 C412 647 637 651 506 469 C517 579 481 408 530 253 C626 196 462 257 574 279 C588 381 649 162 652 341 C736 176 676 270 595 393 C551 502 511 179 608 312 C612 397 708 447 616 375 C736 373 748 312 627 469 C552 479 478 362 535 275 C572 284 689 483 596 461 C546 415 740 502 646 350 C568 483 705 479 578 470 C598 357 572 439 563 438 C591 259 667 301 541 295 C514 408 442 336 425 339 C477 175 577 532 566 565 C690 668 539 510 601 520 C501 495 679 640 594 488 C588 419 456 553 539 509 C654 369 727 177 651 357 C569 254 524 516 473 584 C434 629 437 615 543 528 C442 532 526 141 593 255 C601 231 606 485 639 519 C647 390 459 557 538 507 C576 518 628 307 533 264 C629 164 569 587 504 469 C613 399 567 642 617 482 C541 668 630 423 525 561 C455 646 384 347 449 499 C539 470 700 212 622 354 C596 424 286 189 397 302 C446 458 674 337 547 482 C549 579 634 356 633 287 C549 135 414 322 520 498 C534 503 529 135 511 184 C425 135 660 668 568 590 C683 437 488 449 606 279 C596 379 420 421 467 434 C471 407 689 259 661 443 C716 574 443 556 529 573 C594 538 432 461 514 588 C517 405 556 436 450 322 C505 459 612 520 577 556 C604 558 721 555 590 440 C525 596 458 425 392 320 C477 284 564 456 457 313 C510 414 656 303 584 339 C645 177 559 393 602 405 C470 350 507 466 470 418 C398 587 607 453 562 514 C605 541 471 310 462 352 C597 406 484 646 429 547 C559 367 672 461 640 371 C574 334 357 135 479 238 C445 135 484 601 551 447 C565 450 754 442 661 416 C754 468 560 135 476 191 C502 289 516 578 638 416 C547 405 304 412 394 413 C423 246 578 558 458 588 C465 625 583 385 619 466 C661 489 450 271 508 189 C453 135 441 135 510 212 C417 308 529 344 558 194 C625 135 578 668 446 536 C331 668 614 267 632 276 C754 178 412 653 405 488 C465 476 724 388 594 268 C622 135 486 278 453 295 C373 135 426 166 418 308 C403 372 613 387 625 476 C647 446 734 396 660 384 C754 555 570 156 507 255 C403 404 586 275 509 227 C471 141 443 489 393 465 C418 515 700 369 632 486 C564 668 746 567 634 424 C510 258 381 378 443 406 C476 256 497 135 486 246 C374 313 426 307 413 257 C379 248 440 397 518 456 C584 584 366 418 481 562 C565 608 613 381 540 489 C520 398 704 245 621 295 C662 479 342 484 389 465 C455 624 444 499 463 549 C354 668 438 372 552 530 C569 524 619 135 569 199";
 
 function Portfolio() {
@@ -224,7 +313,7 @@ function Portfolio() {
       setNoteRevealed(true);
       setScrollReady(true);
       window.clearTimeout(greet);
-      greet = window.setTimeout(() => say("intro", "hey there, nidhi here."), 1800);
+      greet = window.setTimeout(() => say("intro", "hey there, thobeka here."), 1800);
       window.clearTimeout(noteTimer);
       window.clearTimeout(unlockTimer);
       skipEvents.forEach((name) => window.removeEventListener(name, unlock));
@@ -302,13 +391,29 @@ function Portfolio() {
     <main>
       <header className={cn("fixed inset-x-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center px-5 py-5 transition-opacity duration-700 sm:px-8 sm:py-7", solidHeader ? "bg-background" : "bg-transparent", scrollReady ? "opacity-100" : "pointer-events-none animate-reveal [animation-delay:2.6s]")}>
         <button aria-label="Back to introduction" onClick={() => go("brain")} className="w-fit bg-transparent font-serif text-3xl font-medium">
-          Nidhi
+          Bekolenkosi<span className="text-[#704582]">.</span>
         </button>
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex" aria-label="Main navigation">
-          <button onClick={() => go("brain")} className="story-link bg-transparent">brain</button>
-          <button onClick={() => go("work")} className="story-link bg-transparent">work</button>
-          <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="story-link" data-cursor="the professional version.">linkedin</a>
-          <button onClick={() => go("hi")} className="story-link bg-transparent" data-cursor="say hello?">let's talk</button>
+          <button onClick={() => go("brain")} className="story-link bg-transparent">
+            about
+          </button>
+          <button onClick={() => go("work")} className="story-link bg-transparent">
+            projects
+          </button>
+          <button onClick={() => go("milestones")} className="story-link bg-transparent">
+            milestones
+          </button>
+          <a
+            href="/cv/thobeka-nkosi-cv.pdf"
+            download="Thobeka-Nkosi-CV.pdf"
+            className="inline-flex items-center justify-center rounded-full bg-[#704582] px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#5C3268] hover:shadow-md"
+            data-cursor="take a little piece of my story."
+          >
+            download cv ↓
+          </a>
+          <button onClick={() => go("hi")} className="story-link bg-transparent" data-cursor="say hello?">
+            let's talk
+          </button>
         </nav>
         <button className="relative h-10 w-10 md:hidden" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen((open) => !open)}>
           <span className={cn("absolute left-1/2 top-1/2 h-[2px] w-7 -translate-x-1/2 rounded-full bg-foreground transition-all duration-300", menuOpen ? "rotate-45" : "-translate-y-[5px]")} />
@@ -316,10 +421,26 @@ function Portfolio() {
         </button>
         {menuOpen && (
           <nav className="absolute inset-x-4 top-16 grid gap-1 border border-border bg-background p-3 text-lg shadow-xl md:hidden">
-            <button onClick={() => go("brain")} className="p-3 text-left">brain</button>
-            <button onClick={() => go("work")} className="p-3 text-left">work</button>
-            <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="p-3">linkedin</a>
-            <button onClick={() => go("hi")} className="p-3 text-left">let's talk</button>
+            <button onClick={() => go("brain")} className="p-3 text-left">
+              about
+            </button>
+            <button onClick={() => go("work")} className="p-3 text-left">
+              projects
+            </button>
+            <button onClick={() => go("milestones")} className="p-3 text-left">
+              milestones
+            </button>
+            <a
+              href="/cv/thobeka-nkosi-cv.pdf"
+              download="Thobeka-Nkosi-CV.pdf"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-full bg-[#704582] px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-[#5C3268]"
+            >
+              download cv ↓
+            </a>
+            <button onClick={() => go("hi")} className="p-3 text-left">
+              let's talk
+            </button>
           </nav>
         )}
       </header>
@@ -342,6 +463,7 @@ function Portfolio() {
       </section>
 
       <Works filter={filter} setFilter={setFilter} />
+      <Milestones />
       <OhHi />
       <CuriousCursor visible={scrollReady} />
       <PhoneComment />
@@ -404,17 +526,34 @@ function StringLine({ subscribe }: { subscribe: Subscribe }) {
 function IntroScene({ contentRevealed, noteRevealed }: { contentRevealed: boolean; noteRevealed: boolean }) {
   return (
     <div className="absolute left-0 top-0 h-full w-screen">
+      {/* Hero headline: same placement as the original template. */}
       <div className={cn("absolute bottom-10 left-8 transition-all duration-700 sm:bottom-8", contentRevealed ? "opacity-100" : "animate-reveal [animation-delay:2.2s]")}>
-        <p className="text-4xl font-semibold leading-[0.95] sm:text-5xl">the<br />anatomy of a<br /><span className="font-serif italic">curious developer.</span></p>
+        <h1 className="text-4xl font-semibold leading-[0.95] sm:text-5xl">
+          too curious<br />
+          to build just<br />
+          <span className="font-serif italic text-[#704582]">one kind of thing.</span>
+        </h1>
       </div>
+
+      {/* Handwritten annotation above the original scribble. */}
       <div className={cn("absolute left-[62%] top-28 flex max-w-56 origin-bottom-left items-start gap-2 text-sm text-muted-foreground transition-all duration-500", noteRevealed ? "opacity-100" : "animate-reveal [animation-delay:2.2s]")}>
-        <svg aria-hidden="true" viewBox="0 0 40 30" className="mt-1 h-6 w-8 shrink-0"><path d="M38 4 C24 6 12 14 4 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /><path d="M4 24 L13 22 M4 24 L7 15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
-        <span>an almost accurate map of everything on my mind.</span>
+        <svg aria-hidden="true" viewBox="0 0 40 30" className="mt-1 h-6 w-8 shrink-0">
+          <path d="M38 4 C24 6 12 14 4 24 M4 24 L13 22 M4 24 L7 15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+        <span>a rough map of what's usually on my mind.</span>
       </div>
-      <div className={cn("absolute bottom-8 right-8 hidden text-right transition-all delay-150 duration-700 sm:block", contentRevealed ? "opacity-100" : "animate-reveal [animation-delay:2.35s]")}>
-        <p className="mb-4 text-sm">or do i say, welcome to my portfolio :)</p>
-        <Button asChild variant="paper" className="mr-2"><a href="#work">view work</a></Button>
-        <Button asChild variant="ink"><a href="#hi" data-cursor="i don't bite.">let's talk</a></Button>
+
+      {/* Intro copy and actions sit at the lower-right of the canvas. */}
+      <div className={cn("absolute bottom-8 right-8 hidden max-w-xs text-right transition-all delay-150 duration-700 sm:block", contentRevealed ? "opacity-100" : "animate-reveal [animation-delay:2.35s]")}>
+        <p className="mb-4 text-sm leading-relaxed">
+          hey, I'm Thobeka! I build software, explore science, and turn curious little ideas into things people can actually use.
+        </p>
+        <Button asChild variant="ink" className="mr-2 border-[#704582] bg-[#704582] text-white hover:border-[#5C3268] hover:bg-[#5C3268]">
+          <a href="#work">explore work</a>
+        </Button>
+        <Button asChild variant="paper">
+          <a href="#hi">say hello</a>
+        </Button>
       </div>
     </div>
   );
@@ -432,17 +571,28 @@ function TinkerScene() {
   return (
     <div>
       <span hidden data-mode="thread" data-at={112} data-say="careful. rabbit holes ahead." />
+      
       <Note x={120} y={42} className="reveal w-[38vw] text-center" at={122}>
-        <p className="text-lg text-muted-foreground">i tinker with a lot of stuff.</p>
-        <h2 className="whitespace-nowrap font-serif text-6xl leading-tight">a jack of all trades</h2>
-        <p className="mt-2 text-lg text-muted-foreground">what a cool way to say i fall down rabbit holes.</p>
+        <p className="mb-2 text-lg text-muted-foreground">
+          a little life outside the terminal.
+        </p>
+        <h2 className="text-5xl font-semibold leading-[0.95] tracking-tight">
+          beyond the {" "}
+          <span className="font-serif font-normal italic text-[#704582]">
+             keyboard.
+          </span>
+        </h2>
+        <p className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+          running, reading, and growing things,
+          whatever's on my mind.
+        </p>
       </Note>
-      <Object src={laptop} alt="a laptop covered in stickers" label="this is where most things begin." style={at(106, 19)} size="sm" delay="0s" />
-      <Object src={camera} alt="an instant camera" label="i like keeping little pieces of time." style={at(104, 60)} size="sm" delay=".6s" />
-      <Object src={cat} alt="a cat wearing sunglasses" label="head of distraction." style={at(124, 68)} size="sm" delay="1.2s" />
-      <Object src={keys} alt="a set of keycaps" label="one more idea. just one." style={at(136, 18)} size="sm" delay=".3s" />
-      <Object src={badminton} alt="a badminton racket and shuttle" label="let's do a match?" style={at(150, 68)} size="sm" delay="1.5s" />
-      <Climber />
+      <Object src={beyondPlant} alt="a potted plant" label="growing things makes me happy." style={at(106, 19)} size="smPlus" delay="0s" />
+      <Object src={beyondShoes} alt="a pair of running shoes" label="sometimes i run with my thoughts." style={at(104, 60)} size="smPlus" delay=".6s" />
+      <Object src={beyondMangaBooks} alt="a stack of manga books" label="stories live here too." style={at(124, 68)} size="smPlus" delay="1.2s" />
+      <Object src={bekoKeys} alt="colourful programming keycaps" label="one more idea. just one." style={at(136, 18)} size="smPlus" delay=".3s" />
+      <Object src={thobekaNoteCards} alt="a set of handwritten note cards" label="why not?" style={at(150, 68)} size="smPlus" delay="1.5s" />
+        <Climber />
     </div>
   );
 }
@@ -562,11 +712,37 @@ function Climber() {
   );
 }
 
+
 const heart = [
-  { src: globe, alt: "a globe wrapped in orbits", x: 200, y: 56, title: "web3 came first.", body: "got curious about systems that don't need one person in charge.", label: "yes, i'm still here." },
-  { src: headphones, alt: "a pair of headphones", x: 224, y: 22, title: "turns out, i like people too.", body: "explaining things is pretty fun too.", label: "docs, talks, demos, communities." },
-  { src: brain, alt: "a brain", x: 260, y: 60, title: "and now, AI.", body: "half engineer. half “what if?”", label: "still trying to understand this thing." },
+  {
+    src: scienceBeaker,
+    alt: "science beaker illustration",
+    x: 200,
+    y: 56,
+    title: "science came first.",
+    body: "Biochemistry and Physiology taught me to look closer and keep asking why.",
+    label: "curiosity started here.",
+  },
+  {
+    src: laptop,
+    alt: "floral laptop illustration",
+    x: 224,
+    y: 22,
+    title: "then came the building.",
+    body: "Software gave my curiosity somewhere to go. Hackathons made it even more fun.",
+    label: "one more project? always.",
+  },
+  {
+    src: brain,
+    alt: "a colourful 3D human brain",
+    x: 260,
+    y: 60,
+    title: "and now, AI.",
+    body: "A whole new world to explore, and another reason to ask, 'what if?'",
+    label: "what if we tried this?",
+  },
 ];
+
 
 // but few things have my heart — each one an object with a big line and a
 // quiet one beside it, and the thread running calmly between the objects.
@@ -590,14 +766,35 @@ function HeartScene() {
 
 // One beat per year, told like a story: a short line that moves it forward,
 // and the detail underneath for anyone who wants it.
+
 const timeline = [
-  { year: "2021", title: "started a company at 17.", line: "Alphonse Esports — tournaments, teams, and a lot of learning on the job, mid-COVID." },
-  { year: "2022", title: "went back to school.", line: "computer science at SMVIT. kept building things on the side." },
-  { year: "2023", title: "found web3.", line: "the tech was weird. naturally, i stayed." },
-  { year: "2024", title: "started shipping.", line: "smart contracts, hackathons, open-source experiments." },
-  { year: "2025", title: "brought people along.", line: "workshops, mentoring, and a few ambassador badges." },
-  { year: "2026", title: "then, AI happened.", line: "now keeping AI agents reliable in production." },
+  {
+    year: "2025",
+    title: "science was my first love.",
+    line: "completed my BSc in Life Sciences, majoring in Biochemistry and Physiology at Sefako Makgatho Health Sciences University.",
+  },
+  {
+    year: "2025",
+    title: "then came a new chapter.",
+    line: "joined WeThinkCode_ and stepped into the world of software engineering.",
+  },
+  {
+    year: "2025–2026",
+    title: "started building things.",
+    line: "from classroom projects to real applications, one idea quickly became another.",
+  },
+  {
+    year: "2026",
+    title: "learning by doing.",
+    line: "exploring new technologies, solving problems, and finding joy in making things work.",
+  },
+  {
+    year: "2026 →",
+    title: "still figuring things out.",
+    line: "still curious. still learning. still building.",
+  },
 ];
+
 const TIMELINE_FROM = 304;
 const TIMELINE_STEP = 18;
 const STEM = 11;
@@ -639,12 +836,32 @@ function TimelineScene() {
         );
       })}
       {/* Each phrase fades in as the thread passes over it, like the years. */}
-      <Note x={302} y={84} className="reveal" at={302}><p className="whitespace-nowrap font-serif text-5xl">somehow, <span className="text-muted-foreground">i keep ending up...</span></p></Note>
-      <Note x={346} y={84} className="reveal" at={346}><p className="whitespace-nowrap font-serif text-5xl"><span className="text-muted-foreground">taking</span> ownership.</p></Note>
-      <Note x={380} y={83} className="reveal w-[25rem] text-lg leading-snug" at={380}>
-        <p>most things i got curious about, i ended up building.</p>
-        <p className="text-muted-foreground">most things i built, i ended up looking after.</p>
+      
+      <Note x={302} y={84} className="reveal" at={302}>
+        <p className="whitespace-nowrap font-serif text-5xl">
+          one curiosity
+        </p>
       </Note>
+
+      <Note x={346} y={84} className="reveal" at={346}>
+        <p className="whitespace-nowrap font-serif text-5xl italic text-[#704582]">
+          led to another.
+        </p>
+      </Note>
+
+      
+      <Note
+        x={380}
+        y={83}
+        className="reveal w-[25rem] text-lg leading-snug"
+        at={380}
+      >
+        <p>still learning. still building.</p>
+        <p className="italic text-[#704582]">
+          still curious.
+        </p>
+      </Note>
+
     </div>
   );
 }
@@ -675,7 +892,7 @@ function ApparentlyScene() {
     <div>
       <span hidden data-mode="thread" data-at={looped} data-say="yes, it's a loop. i'm aware." />
       <Note x={428} y={22} className="reveal w-[32rem]" at={428}>
-        <p className="font-serif text-6xl leading-[1.05]">apparently, <span className="text-muted-foreground">i don't know how to leave things alone.</span></p>
+        <p className="font-serif text-6xl leading-[1.05]"><span className="text-[#704582]">apparently,</span> <span className="text-muted-foreground">i don't know how to leave things alone.</span></p>
       </Note>
       {habit.map(({ step, x, y, place }, index) => (
         <div key={step} className="reveal" data-mode="thread" data-at={looped} style={{ "--reveal-delay": `${index * 0.25}s` } as CSSProperties}>
@@ -700,13 +917,21 @@ function EnoughScene({ onWork }: { onWork: () => void }) {
         <h2 className="mt-3 font-serif text-6xl">let's look at what came out of it.</h2>
       </Note>
       <div className="absolute -translate-y-1/2" style={at(BUTTON_X, BUTTON_Y)}>
-        <Button variant="ink" onClick={onWork} data-cursor="show me the work ↓">see the work <ArrowDown className="ml-2 h-4 w-4" /></Button>
+        <Button variant="ink" onClick={onWork} className="border-[#704582] bg-[#704582] text-white hover:border-[#5C3268] hover:bg-[#5C3268]" data-cursor="show me the work ↓">see the work <ArrowDown className="ml-2 h-4 w-4" /></Button>
       </div>
     </>
   );
 }
 
-const figureSizes = { fill: "h-full w-full", sm: "h-36 w-36 lg:h-44 lg:w-44", md: "h-44 w-44 lg:h-56 lg:w-56", lg: "h-52 w-52 lg:h-64 lg:w-64" };
+
+const figureSizes = {
+  fill: "h-full w-full",
+  sm: "h-36 w-36 lg:h-44 lg:w-44",
+  smPlus: "h-40 w-40 lg:h-48 lg:w-48",
+  md: "h-44 w-44 lg:h-56 lg:w-56",
+  lg: "h-52 w-52 lg:h-64 lg:w-64",
+};
+
 
 // Each object keeps its own little confession. It types itself out on hover and
 // springs back into hiding the moment the cursor leaves. The object tilts toward
@@ -840,7 +1065,7 @@ const MOBILE_LOOP = 70;
 function MobileObject({ src, alt, label, style, delay }: { src: string; alt: string; label: string; style: CSSProperties; delay: string }) {
   return (
     <div className="absolute" style={style}>
-      <Figure src={src} alt={alt} label={label} size="sm" delay={delay} />
+      <Figure src={src} alt={alt} label={label} size="smPlus" delay={delay} />
       <span data-anchor className="absolute left-1/2 top-1/2" />
     </div>
   );
@@ -1032,29 +1257,38 @@ function MobileStory({ ready, onWork }: { ready: boolean; onWork: () => void }) 
         </svg>
         <div className={cn("absolute right-5 top-[17svh] flex w-44 items-start gap-1.5 text-[0.8rem] leading-snug text-muted-foreground", ready ? "opacity-100" : "animate-reveal [animation-delay:2.2s]")}>
           <svg aria-hidden="true" viewBox="0 0 40 30" className="mt-4 h-5 w-7 shrink-0"><path d="M38 4 C24 6 12 14 4 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /><path d="M4 24 L13 22 M4 24 L7 15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
-          <span>an almost accurate map of everything on my mind.</span>
+          <span>a rough map of what's usually on my mind.</span>
         </div>
-        <p className={cn("absolute left-5 top-[90svh] text-[2.6rem] font-semibold leading-[0.95]", ready ? "opacity-100" : "animate-reveal [animation-delay:2.2s]")}>the<br />anatomy of a<br /><span className="font-serif italic">curious developer.</span></p>
+        <h1 className={cn("absolute left-5 top-[90svh] text-[clamp(2.2rem,8vw,2.6rem)] font-semibold leading-[0.95]", ready ? "opacity-100" : "animate-reveal [animation-delay:2.2s]")}>
+          too curious<br />
+          to build just<br />
+          <span className="font-serif italic text-[#704582]">one kind of thing.</span>
+        </h1>
         <Anchor x="86%" y="66svh" />
         <Anchor x="93%" y="122svh" />
       </div>
 
-      {/* i tinker with a lot of stuff — objects spread out on alternating sides */}
+      {/* beyond the keyboard — objects spread out on alternating sides */}
       <div className="relative h-[1500px]">
         <span data-say="careful. rabbit holes ahead." className="absolute left-0 top-0 h-px w-px" />
-        <MobileObject src={laptop} alt="a laptop covered in stickers" label="this is where most things begin." style={{ left: "3%", top: 20 }} delay="0s" />
-        <MobileObject src={keys} alt="a set of keycaps" label="one more idea. just one." style={{ right: "5%", top: 190 }} delay=".4s" />
+        <MobileObject src={beyondPlant} alt="a potted plant" label="growing things makes me happy." style={{ left: "3%", top: 20 }} delay="0s" />
+        <MobileObject src={bekoKeys} alt="colourful programming keycaps" label="one more idea. just one." style={{ right: "5%", top: 190 }} delay=".4s" />
         <Anchor x="95%" y={400} />
-        <div className="reveal absolute inset-x-0 top-[420px] mx-auto max-w-[17rem] text-center">
-          <p className="text-muted-foreground">i tinker with a lot of stuff.</p>
-          <h2 className="mt-1 whitespace-nowrap font-serif text-[2.1rem] leading-tight">a jack of all trades</h2>
-          <p className="mt-1 text-sm text-muted-foreground">what a cool way to say i fall down rabbit holes.</p>
+        <div className="reveal absolute inset-x-0 top-[420px] mx-auto max-w-[19rem] px-2 text-center">
+          <p className="text-sm text-muted-foreground">a little life outside the terminal.</p>
+          <h2 className="mt-1 text-[2rem] font-semibold leading-tight tracking-tight">
+            beyond the{" "}
+            <span className="font-serif font-normal italic text-[#704582]">keyboard.</span>
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            running, reading, and growing things, whatever's on my mind.
+          </p>
         </div>
         <Anchor x="95%" y={590} />
-        <MobileObject src={camera} alt="an instant camera" label="i like keeping little pieces of time." style={{ left: "4%", top: 630 }} delay=".8s" />
-        <MobileObject src={cat} alt="a cat wearing sunglasses" label="head of distraction." style={{ right: "3%", top: 820 }} delay="1.2s" />
-        <MobileObject src={badminton} alt="a badminton racket and shuttle" label="competitive. occasionally." style={{ left: "6%", top: 1010 }} delay="1.6s" />
-        {/* the climber gets her own stretch of thread to be dragged along */}
+        <MobileObject src={beyondShoes} alt="a pair of running shoes" label="sometimes i run with my thoughts." style={{ left: "4%", top: 630 }} delay=".8s" />
+        <MobileObject src={beyondMangaBooks} alt="a stack of manga books" label="stories live here too." style={{ right: "3%", top: 820 }} delay="1.2s" />
+        <MobileObject src={thobekaNoteCards} alt="a set of handwritten note cards" label="why not?" style={{ left: "6%", top: 1010 }} delay="1.6s" />
+        {/* the climber keeps her original draggable stretch of thread */}
         <Anchor x="4%" y={CLIMB_Y0} />
         <MobileClimber />
         <Anchor x="96%" y={CLIMB_Y1} />
@@ -1087,7 +1321,15 @@ function MobileStory({ ready, onWork }: { ready: boolean; onWork: () => void }) 
       <div className="relative mt-20 px-5">
         <span data-say="the short version. very short." className="absolute left-0 top-20 h-px w-px" />
         <Anchor x="6%" y={-20} />
-        <p className="reveal mx-auto max-w-[18rem] text-center font-serif text-[2rem] leading-tight">somehow,<br /><span className="text-muted-foreground">i keep ending up...</span></p>
+        
+        <p className="reveal mx-auto max-w-[18rem] text-center font-serif text-[2rem] leading-tight">
+          one curiosity
+          <br />
+          <span className="italic text-[#704582]">
+            led to another.
+          </span>
+        </p>
+
         <ol className="relative mt-10 pl-9">
           {timeline.map((stop) => (
             <li key={stop.year + stop.title} className="reveal relative pb-7">
@@ -1103,11 +1345,21 @@ function MobileStory({ ready, onWork }: { ready: boolean; onWork: () => void }) 
         <Anchor x="6%" y="100%" />
       </div>
       <div className="relative px-5 pt-4">
-        <p className="reveal text-center font-serif text-[2rem]"><span className="text-muted-foreground">...taking</span> ownership.</p>
-        <div className="reveal mx-auto mt-3 max-w-[19rem] text-center text-sm leading-snug">
-          <p>most things i got curious about, i ended up building.</p>
-          <p className="text-muted-foreground">most things i built, i ended up looking after.</p>
+        
+        <p className="reveal text-center font-serif text-[2rem] leading-tight">
+          still learning.
+          <br />
+          still building.
+          <br />
+          <span className="italic text-[#704582]">
+            still curious.
+          </span>
+        </p>
+
+        <div className="reveal mx-auto mt-3 max-w-[19rem] text-center text-sm leading-snug text-muted-foreground">
+          <p>there's still so much to explore.</p>
         </div>
+
         <Anchor x="5%" y="calc(100% + 1rem)" />
       </div>
 
@@ -1115,7 +1367,7 @@ function MobileStory({ ready, onWork }: { ready: boolean; onWork: () => void }) 
       <div className="relative mt-16 px-5">
         <Anchor x="89%" y={-24} />
         <Anchor x="90%" y={150} />
-        <p className="reveal font-serif text-[2.3rem] leading-[1.05]">apparently, <span className="text-muted-foreground">i don't know how to leave things alone.</span></p>
+        <p className="reveal font-serif text-[2.3rem] leading-[1.05]"><span className="text-[#704582]">apparently,</span> <span className="text-muted-foreground">i don't know how to leave things alone.</span></p>
         <div className="reveal relative mt-4 h-[270px]">
           <span data-say="yes, it's a loop. i'm aware." className="absolute left-0 top-1/2 h-px w-px" />
           <Anchor x="86%" y={205} />
@@ -1137,51 +1389,186 @@ function MobileStory({ ready, onWork }: { ready: boolean; onWork: () => void }) 
         <div className="relative mt-7 inline-block">
           <span data-anchor className="absolute left-[calc(100%+2.75rem)] top-[-0.25rem]" />
           <span data-anchor className="absolute left-full top-1/2" />
-          <Button variant="ink" onClick={onWork}>see the work <ArrowDown className="ml-2 h-4 w-4" /></Button>
+          <Button variant="ink" onClick={onWork} className="border-[#704582] bg-[#704582] text-white hover:border-[#5C3268] hover:bg-[#5C3268]">see the work <ArrowDown className="ml-2 h-4 w-4" /></Button>
         </div>
       </div>
     </div>
   );
 }
 
-function Works({ filter, setFilter }: { filter: string; setFilter: (filter: string) => void }) {
-  const filtered = filter === "All" ? projects : projects.filter((project) => project.tags.includes(filter));
+
+function Works({
+  filter,
+  setFilter,
+}: {
+  filter: string;
+  setFilter: (filter: string) => void;
+}) {
+  const filtered =
+    filter === "All"
+      ? projects
+      : projects.filter((project) => project.tags.includes(filter));
+
   return (
-    <section id="work" className="relative min-h-screen border-t border-foreground bg-background px-5 pb-24 pt-28 sm:px-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden" aria-hidden="true"><p className="translate-y-[-38%] whitespace-nowrap text-[26vw] font-semibold leading-none text-muted">WORKS</p></div>
+    <section
+      id="work"
+      className="relative min-h-screen border-t border-foreground bg-background px-5 pb-24 pt-28 sm:px-8"
+    >
+      {/* Keep the original giant background lettering */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <p className="translate-y-[-38%] whitespace-nowrap text-[19vw] font-semibold leading-none text-muted">
+          PROJECTS
+        </p>
+      </div>
+
       <div className="relative mx-auto grid max-w-[1500px] gap-16 pt-[18vw] lg:grid-cols-[minmax(280px,0.65fr)_minmax(0,1.35fr)]">
+
+        {/* Original sticky left column */}
         <aside className="h-fit lg:sticky lg:top-28">
-          <p className="text-sm text-muted-foreground">selected work / 2022—now</p>
-          <h2 className="mt-4 max-w-md font-serif text-5xl leading-none sm:text-6xl">a few things,<br /><em>chosen on purpose.</em></h2>
-          <p className="mt-8 max-w-sm text-muted-foreground">AI, privacy, and open source, built end to end.</p>
+          <p className="text-sm text-muted-foreground">
+            selected projects / 2025–2026
+          </p>
+          
+          <h2 className="mt-4 max-w-md font-serif text-5xl leading-none sm:text-6xl">
+            a few things,
+            <br />
+            <em className="text-[#704582]">chosen on purpose.</em>
+          </h2>
+
+          <p className="mt-8 max-w-sm text-muted-foreground">
+            science, software, and curiosity.
+            different ideas, all brought to life.
+          </p>
+
           <p className="mb-3 mt-10 text-sm">show me</p>
+          
           <div className="flex flex-wrap gap-2">
-            {["All", "AI", "Privacy", "Open source"].map((item) => <Button key={item} variant="filter" data-active={filter === item} onClick={() => setFilter(item)} data-cursor={`filter: ${item.toLowerCase()}`}>{item}</Button>)}
+            {["All", "Data", "Java", "HealthTech"].map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setFilter(item)}
+                data-cursor={`filter: ${item.toLowerCase()}`}
+                aria-pressed={filter === item}
+                className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                  filter === item
+                    ? "border-[#704582] bg-[#704582] text-white"
+                    : "border-[#DCCFDF] bg-transparent text-[#704582] hover:border-[#704582] hover:bg-[#704582] hover:text-white"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
+
         </aside>
+
+        {/* Original large vertical project gallery */}
         <div className="grid gap-20">
           {filtered.map((project) => (
             <article key={project.title} className="group">
-              <a href={project.live} target="_blank" rel="noreferrer" className="block overflow-hidden border border-border bg-muted" data-cursor="see it live ↗">
-                <img src={project.image} alt={`${project.title} website`} loading="lazy" width={1200} height={912} className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" />
+
+              {/* Project image */}
+              <a
+                href={project.code}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-hidden border border-border bg-muted"
+                data-cursor="view on github ↗"
+              >
+                <img
+                  src={project.image}
+                  alt={
+                    project.title === "HealthSafe"
+                      ? "HealthSafe hospital operations dashboard concept illustration"
+                      : `${project.title} screenshot`
+                  }
+                  loading="lazy"
+                  className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                />
               </a>
+
+              {/* Project details */}
               <div className="mt-5 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-5">
-                <div className="min-w-0"><p className="text-xs text-muted-foreground">{project.number} / {project.tags.join(" · ")}</p><h3 className="mt-1 font-serif text-4xl">{project.title}</h3><p className="mt-2 max-w-xl text-muted-foreground">{project.blurb}</p></div>
-                <Button asChild variant="paper" size="icon"><a href={project.code} target="_blank" rel="noreferrer" aria-label={`${project.title} on GitHub`} data-cursor="read the code ↗"><ArrowUpRight className="h-5 w-5" /></a></Button>
+
+                <div className="min-w-0">
+                  <p className="text-xs text-muted-foreground">
+                    {project.number} / selected project
+                  </p>
+
+                  <h3 className="mt-1 font-serif text-4xl">
+                    {project.title}
+                  </h3>
+
+                  <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
+                    {project.blurb}
+                  </p>
+
+                  {/* Purple technology capsules */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center rounded-full border border-[#DCCFDF] px-3 py-1.5 text-xs font-medium text-[#704582]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* GitHub arrow */}
+                <Button asChild variant="paper" size="icon">
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.title} on GitHub`}
+                    data-cursor="read the code ↗"
+                  >
+                    <ArrowUpRight className="h-5 w-5" />
+                  </a>
+                </Button>
               </div>
             </article>
           ))}
-          {filtered.length === 0 && <p className="py-24 text-muted-foreground">That shelf is being rearranged. Try another filter.</p>}
-          {/* the way down to everything else */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-10">
-            <p className="font-serif text-3xl">interested? <span className="text-muted-foreground">there's more.</span></p>
-            <RabbitHoleButton />
+
+          {filtered.length === 0 && (
+            <p className="py-24 text-muted-foreground">
+              No projects in this category yet.
+            </p>
+          )}
+
+          {/* More projects invitation */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-border pt-10">
+            <p className="font-serif text-3xl">
+              interested?{" "}
+              <span className="text-muted-foreground">
+                there's more.
+              </span>
+            </p>
+
+            <a
+              href="https://github.com/beko-1enkosi?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-5 rounded-full bg-[#704582] px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#5C3268]"
+              data-cursor="more rabbit holes ahead."
+            >
+              more rabbit holes
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
+
         </div>
       </div>
     </section>
   );
 }
+
 
 // Where the closing thread ends — her raised hand — in vw/vh of the section's
 // first screen. The photo is pinned so that hand lands exactly on this point.
@@ -1261,7 +1648,7 @@ function MeCutout({ visible, phone = false, imgRef }: { visible: boolean; phone?
       <img
         ref={imgRef}
         src={me}
-        alt="nidhi, one hand up in a peace sign, holding the end of the thread"
+        alt="Thobeka in a black outfit, raising a peace sign"
         draggable={false}
         onContextMenu={(e) => e.preventDefault()}
         data-cursor=""
@@ -1284,8 +1671,8 @@ function MeCutout({ visible, phone = false, imgRef }: { visible: boolean; phone?
           visible ? "opacity-100" : "opacity-0",
         )}
         style={{
-          ...(phone ? {} : { left: `${HAND_X}vw`, top: `${HAND_Y}vh`, translate: "-41% -2%" }),
-          transformOrigin: "41% 2%",
+          ...(phone ? {} : { left: `${HAND_X}vw`, top: `${HAND_Y}vh`, translate: "-29% -1%" }),
+          transformOrigin: "29% 1%",
           transform: `skewX(${-lean}deg) scale(${(hovered && !dragging ? 1.04 : 1) * squeeze}, ${(hovered && !dragging ? 1.04 : 1) * stretch})`,
           filter: talking ? "drop-shadow(0 24px 30px rgb(0 0 0 / 0.22))" : "drop-shadow(0 6px 10px rgb(0 0 0 / 0.08))",
           // Follow the finger instantly while dragging; wobble back when let go.
@@ -1315,9 +1702,7 @@ function ScribbleArrow({ d, head, className, style }: { d: string; head: string;
   );
 }
 
-const pill = "inline-flex items-center justify-between gap-10 rounded-xl px-5 text-[1.05rem] transition-colors";
-
-// 10 — the end. "oh, hi. i'm nidhi." — and the thread leaves the "hi." and
+// 10 — the end. "oh, hi. i'm thobeka." — and the thread leaves the "hi." and
 // waves its way across into my raised hand. Margin notes scribbled around it.
 function OhHi() {
   const ref = useRef<HTMLElement>(null);
@@ -1346,13 +1731,13 @@ function OhHi() {
       const sx = ((r.right - q.left) / window.innerWidth) * 100 + 0.8;
       const sy = ((r.top - q.top + r.height * 0.55) / window.innerHeight) * 100;
       // On phones, trace it in pixels: out of the "hi.", down the right edge,
-      // and hook into the hand (41% across, 2% down the cutout).
+      // and hook into the raised hand (29% across, 2% down the cutout).
       const img = phoneImgRef.current;
       if (window.innerWidth < 768 && img) {
         const m = img.getBoundingClientRect();
         const w = q.width;
         const start: Waypoint = [r.right - q.left + 6, r.top - q.top + r.height * 0.55];
-        const hand: Waypoint = [m.left - q.left + m.width * 0.41, m.top - q.top + m.height * 0.02];
+        const hand: Waypoint = [m.left - q.left + m.width * 0.29, m.top - q.top + m.height * 0.02];
         const d = segmentsPath(threadSegments([start, [w * 0.9, start[1] + 36], [w * 0.95, (start[1] + hand[1]) / 2], [hand[0] + 44, hand[1] - 80], hand], 1, 1));
         setPhoneThread({ d, y0: start[1], y1: hand[1], w, h: q.height });
       }
@@ -1445,12 +1830,12 @@ function OhHi() {
           <path d="M9 4 L11 15 M23 7 L18 17 M33 17 L23 21" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
         <MeCutout visible={stage.reached} />
-        <div {...arrive(stage.reached, ".3s", "absolute", { left: `${HAND_X + 9.5}vw`, top: "32vh" })}>
-          <Scribble className="w-36" rotate={-14}>same girl...<br />just more<br />ideas now.</Scribble>
+        <div {...arrive(stage.reached, ".3s", "absolute hidden lg:block", { right: "1.5vw", top: "32vh" })}>
+          <Scribble className="w-32 text-[0.93rem]" rotate={-14}>same girl...<br />just more<br />ideas now.</Scribble>
           <ScribbleArrow className="-left-2 top-24" d="M30 4 C32 20 22 32 6 36" head="M6 36 L16 29 M6 36 L15 42" />
         </div>
-        <div {...arrive(stage.reached, ".6s", "absolute", { left: `${HAND_X + 9.5}vw`, top: "65vh" })}>
-          <Scribble className="w-36" rotate={-14}>still figuring<br />this out...<br />and probably<br />always will.</Scribble>
+        <div {...arrive(stage.reached, ".6s", "absolute hidden lg:block", { right: "1.5vw", top: "65vh" })}>
+          <Scribble className="w-32 text-[0.93rem]" rotate={-14}>still figuring<br />this out...<br />and probably<br />always will.</Scribble>
           <ScribbleArrow className="-left-12 top-10" d="M40 18 C30 30 18 32 6 30" head="M6 30 L15 24 M6 30 L14 37" />
         </div>
       </div>
@@ -1462,38 +1847,64 @@ function OhHi() {
           <h2 className="font-serif text-[clamp(3.5rem,6.6vw,7.5rem)] leading-[0.9] tracking-[-0.01em]">
             <span ref={hiRef}>oh, hi.</span>
             <br />
-            i'm <em>nidhi</em>.
+            i'm <em className="text-[#704582]">thobeka</em>.
           </h2>
         </div>
         <p className="mt-4 text-[clamp(1.05rem,1.25vw,1.35rem)] leading-[1.2] text-muted-foreground">still curious.<br />still building.<br />still opening tabs.</p>
         <p className="mt-7 font-serif text-[clamp(1.75rem,2.75vw,3rem)] leading-[1.08]">let's build something<br />the internet <em>hasn't seen yet</em>.</p>
         <div className="relative mt-7 flex w-fit flex-col items-start gap-3">
-          <a href={`mailto:${EMAIL}`} className={cn(pill, "min-w-64 bg-foreground py-3 text-background hover:bg-foreground/85")} data-cursor="send the interesting idea.">{EMAIL} <ArrowUpRight className="h-4 w-4" /></a>
-          <div className="flex flex-wrap gap-3">
-            <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className={cn(pill, "border border-foreground/50 py-2.5 hover:bg-foreground/5 max-md:bg-background")} data-cursor="the professional version.">linkedin <ArrowUpRight className="h-4 w-4" /></a>
-            <a href={LINKS.github} target="_blank" rel="noreferrer" className={cn(pill, "border border-foreground/50 py-2.5 hover:bg-foreground/5 max-md:bg-background")} data-cursor="where the rabbit holes live.">github <ArrowUpRight className="h-4 w-4" /></a>
-            <a href={LINKS.x} target="_blank" rel="noreferrer" className={cn(pill, "border border-foreground/50 py-2.5 hover:bg-foreground/5 max-md:bg-background")} data-cursor="unfiltered thoughts.">x <ArrowUpRight className="h-4 w-4" /></a>
+          {/* Recognisable social links. Three columns on phones, six on larger screens. */}
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-6" aria-label="Connect with Thobeka">
+            {[
+              { name: "Gmail", href: `mailto:${EMAIL}`, Icon: SiGmail, color: "#EA4335", hint: "send me an email." },
+              { name: "LinkedIn", href: LINKS.linkedin, Icon: FaLinkedin, color: "#0A66C2", hint: "the professional version." },
+              { name: "GitHub", href: LINKS.github, Icon: SiGithub, color: "#181717", hint: "where my code lives." },
+              { name: "Discord", href: LINKS.discord, Icon: SiDiscord, color: "#5865F2", hint: "say hi on discord." },
+              { name: "Instagram", href: LINKS.instagram, Icon: SiInstagram, color: "#E4405F", hint: "little moments outside code." },
+              { name: "X / Twitter", href: LINKS.x, Icon: FaXTwitter, color: "#111111", hint: "thoughts in progress." },
+            ].map(({ name, href, Icon, color, hint }) => (
+              <a
+                key={name}
+                href={href}
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                aria-label={name}
+                title={name}
+                data-cursor={hint}
+                className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-2xl border border-[#E4DBE7] bg-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-[#704582] hover:bg-[#F8F3FA] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#704582] sm:h-[72px] sm:w-[72px]"
+              >
+                <Icon
+                  size={27}
+                  style={{ color }}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+                <span className="text-[11px] font-medium text-foreground">
+                  {name === "X / Twitter" ? "X" : name}
+                </span>
+              </a>
+            ))}
           </div>
-          {/* the astronaut sits just past the buttons, its fun fact scribbled beside it */}
+          {/* The stethoscope and its little childhood dream. */}
           <div className="absolute bottom-[-1.75rem] left-[calc(100%+5vw)] hidden items-end gap-1 md:flex">
             <div className="relative mb-24">
-              <Scribble className="w-36" rotate={-10}>fun fact:<br />i wanted to be<br />an astronaut.</Scribble>
+              <Scribble className="w-36" rotate={-10}>fun fact:<br />little me wanted<br />to be a doctor.</Scribble>
               <ScribbleArrow className="-right-8 top-[4.5rem]" d="M4 8 C8 22 18 30 34 30" head="M34 30 L25 24 M34 30 L26 37" />
             </div>
-            <Figure src={astronaut} alt="a small astronaut holding a star" label="still aiming for the stars. just with code." size="sm" />
+            <Figure src={stethoscope} alt="a playful 3D pink stethoscope" label="little me had big medical dreams." size="sm" />
           </div>
         </div>
         <div className="relative ml-auto mt-16 w-[58%] md:hidden">
           <MeCutout phone visible={phoneReached} imgRef={phoneImgRef} />
-          {/* the astronaut, standing by my legs, with its fun fact above it */}
+          {/* The same stethoscope and fun fact on smaller screens. */}
           <div className="absolute bottom-[1%] right-[66%] flex w-40 flex-col items-center">
-            <Scribble className="mb-1 w-36 text-center" rotate={-8}>fun fact:<br />i wanted to be<br />an astronaut.</Scribble>
-            <Figure src={astronaut} alt="a small astronaut holding a star" label="still aiming for the stars. just with code." size="sm" />
+            <Scribble className="mb-1 w-36 text-center" rotate={-8}>fun fact:<br />little me wanted<br />to be a doctor.</Scribble>
+            <Figure src={stethoscope} alt="a playful 3D pink stethoscope" label="little me had big medical dreams." size="sm" />
           </div>
         </div>
       </div>
 
-      <button onClick={() => document.getElementById("brain")?.scrollIntoView({ behavior: "smooth" })} className="story-link mt-10 block bg-transparent text-xs text-muted-foreground/70 md:absolute md:bottom-5 md:right-8 md:mt-0" data-cursor="rewind ↑">© 2026 nidhi · back to top ↑</button>
+      <button onClick={() => document.getElementById("brain")?.scrollIntoView({ behavior: "smooth" })} className="story-link mt-10 block bg-transparent text-xs text-muted-foreground/70 md:absolute md:bottom-5 md:right-8 md:mt-0" data-cursor="rewind ↑">© 2026 bekolenkosi · back to top ↑</button>
     </section>
   );
 }
@@ -1514,8 +1925,10 @@ function PhoneComment() {
     };
     window.addEventListener("figure-open", hush);
     window.addEventListener("cursor-comment", onComment);
-    return () => window.removeEventListener("figure-open", hush);
+    return () => {
+      window.removeEventListener("figure-open", hush);
       window.removeEventListener("cursor-comment", onComment);
+    };
   }, []);
 
   useEffect(() => {
