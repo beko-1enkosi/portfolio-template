@@ -226,10 +226,3 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
-
-/* On the work page, the cursor is the little 3D arrow from the rabbit hole. */
-.dark-page,
-.dark-page * {
-  cursor: url("/cursor-arrow.png") 3 2, auto;
-  cursor: image-set(url("/cursor-arrow.png") 1x, url("/cursor-arrow@2x.png") 2x) 3 2, auto;
-}

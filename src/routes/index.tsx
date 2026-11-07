@@ -26,7 +26,6 @@ import beyondMangaBooks from "@/assets/bekolenkosi/beyond-manga-books.png";
 import thobekaNoteCards from "@/assets/bekolenkosi/thobeka-note-cards.png";
 
 
-import { CLIMBED_OUT, takeFlag } from "@/components/rabbit-hole";
 import { Button } from "@/components/ui/button";
 import { jsonLd } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -298,8 +297,8 @@ function Portfolio() {
   // First the mind arrives, then its note, and only then does scrolling take over.
   useEffect(() => {
     const root = document.documentElement;
-    // Climbing back out of the rabbit hole lands straight on the work, no intro.
-    if (takeFlag(CLIMBED_OUT) || window.location.hash === "#work") {
+    // A link to projects skips the intro animation.
+    if (window.location.hash === "#work") {
       setNoteRevealed(true);
       setScrollReady(true);
       requestAnimationFrame(() => document.getElementById("work")?.scrollIntoView({ behavior: "instant" }));
