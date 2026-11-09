@@ -48,14 +48,14 @@ const categories: MilestoneCategory[] = [
       "Learning doesn't stop when the class ends. A few things I've picked up along the way.",
     items: [
       {
-        title: "Introduction to Kubernetes",
-        description: "The Linux Foundation",
-        images: [introKubernetes],
-      },
-      {
         title: "Introduction to Linux",
         description: "The Linux Foundation",
         images: [introLinux],
+      },
+      {
+        title: "Introduction to Kubernetes",
+        description: "The Linux Foundation",
+        images: [introKubernetes],
       },
       {
         title: "Kubernetes and Cloud Native Associate",
