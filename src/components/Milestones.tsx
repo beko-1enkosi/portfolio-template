@@ -8,6 +8,7 @@ import kcna from "@/assets/bekolenkosi/milestones/certificates/kcna.png";
 import kubernetesEssentials from "@/assets/bekolenkosi/milestones/certificates/kubernetes-essentials.png";
 import scientificPython from "@/assets/bekolenkosi/milestones/certificates/scientific-computing-python.png";
 import genAI from "@/assets/bekolenkosi/milestones/certificates/wethinkcode-genai.png";
+import fullStack from "@/assets/bekolenkosi/milestones/certificates/full-stack-development.png";
 
 import cisco01 from "@/assets/bekolenkosi/milestones/little-victories/cisco-shebuild-01.jpeg";
 import cisco02 from "@/assets/bekolenkosi/milestones/little-victories/cisco-shebuild-02.jpeg";
@@ -48,6 +49,26 @@ const categories: MilestoneCategory[] = [
       "Learning doesn't stop when the class ends. A few things I've picked up along the way.",
     items: [
       {
+        title: "Kubernetes and Cloud Native Associate",
+        description: "The Linux Foundation · KCNA",
+        images: [kcna],
+      },
+      {
+        title: "Generative AI for Software Engineers",
+        description: "WeThinkCode_",
+        images: [genAI],
+      },
+      {
+        title: "Scientific Computing with Python",
+        description: "freeCodeCamp",
+        images: [scientificPython],
+      },
+      {
+        title: "Full Stack Development",
+        description: "FNB APP Academy",
+        images: [fullStack],
+      },
+      {
         title: "Introduction to Linux",
         description: "The Linux Foundation",
         images: [introLinux],
@@ -58,24 +79,9 @@ const categories: MilestoneCategory[] = [
         images: [introKubernetes],
       },
       {
-        title: "Kubernetes and Cloud Native Associate",
-        description: "The Linux Foundation · KCNA",
-        images: [kcna],
-      },
-      {
         title: "Kubernetes and Cloud Native Essentials",
         description: "The Linux Foundation",
         images: [kubernetesEssentials],
-      },
-      {
-        title: "Scientific Computing with Python",
-        description: "freeCodeCamp",
-        images: [scientificPython],
-      },
-      {
-        title: "Generative AI for Software Engineers",
-        description: "WeThinkCode_",
-        images: [genAI],
       },
     ],
   },
