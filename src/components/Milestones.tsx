@@ -92,7 +92,7 @@ const categories: MilestoneCategory[] = [
       "Some late nights, good teammates, big ideas, and moments worth remembering.",
     items: [
       {
-        title: "Monkey & River × Momentum",
+        title: "Monkey & River × Momentum Hackathon 🥉",
         award: "3rd Place · Msizi",
         description:
           "Built Msizi, a secure AI-powered life insurance companion helping policyholders, beneficiaries, and staff navigate insurance services.",
@@ -101,7 +101,7 @@ const categories: MilestoneCategory[] = [
         repo: "https://github.com/Baraka-kileo/origin",
       },
       {
-        title: "Cisco × WeThinkCode_ SheBuild",
+        title: "Cisco × WeThinkCode_ SheBuild Hackathon 🥉",
         award: "3rd Place · Thuso",
         description:
           "Built Thuso, a job safety platform helping job seekers verify opportunities, recognise recruitment scams, and prepare for safer interviews.",
@@ -110,7 +110,7 @@ const categories: MilestoneCategory[] = [
         repo: "https://github.com/beko-1enkosi/thuso",
       },
       {
-        title: "Mukuru × WeThinkCode_ SheHacks",
+        title: "Mukuru × WeThinkCode_ SheHacks Hackathon 🥉",
         award: "3rd Place · KingaPesa",
         description:
           "Built KingaPesa, a multilingual cross-border family support prototype with transparent money transfers, low-connectivity features, and safer recipient access.",
