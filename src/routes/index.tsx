@@ -13,6 +13,7 @@ import laptop from "@/assets/obj3d-laptop.webp";
 
 
 import Milestones from "@/components/Milestones";
+import Skills from "@/components/Skills";
 
 import airatlasImage from "@/assets/bekolenkosi/projects/airatlas.png";
 import robotWorldsImage from "@/assets/bekolenkosi/projects/robot-worlds.png";
@@ -402,6 +403,9 @@ function Portfolio() {
           <button onClick={() => go("milestones")} className="story-link bg-transparent">
             milestones
           </button>
+          <button onClick={() => go("skills")} className="story-link bg-transparent">
+            skills
+          </button>
           <a
             href="/cv/thobeka-nkosi-cv.pdf"
             download="Thobeka-Nkosi-CV.pdf"
@@ -428,6 +432,9 @@ function Portfolio() {
             </button>
             <button onClick={() => go("milestones")} className="p-3 text-left">
               milestones
+            </button>
+            <button onClick={() => go("skills")} className="p-3 text-left">
+              skills
             </button>
             <a
               href="/cv/thobeka-nkosi-cv.pdf"
@@ -463,6 +470,7 @@ function Portfolio() {
 
       <Works filter={filter} setFilter={setFilter} />
       <Milestones />
+      <Skills />
       <OhHi />
       <CuriousCursor visible={scrollReady} />
       <PhoneComment />
