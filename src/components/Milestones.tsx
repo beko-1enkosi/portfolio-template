@@ -127,20 +127,6 @@ const categories: MilestoneCategory[] = [
       "Not every experience comes with a podium. Sometimes showing up, learning, and trying something new is the win.",
     items: [
       {
-        title: "Canvathon Africa 2026",
-        description:
-            "As part of a team of three, I helped rebrand Upthink Digital by creating a brand kit, promotional flyer, and website landing page. Coming from software development, this challenge pushed me to explore branding, typography, colour, and user experience. We didn't win, but I walked away with new skills, a greater appreciation for design, and even more curiosity.",
-        images: [canvathon],
-        tags: [
-            "Brand Identity",
-            "UI/UX Design",
-            "Typography",
-            "Web Design",
-            "Teamwork",
-            "Creativity",
-        ],
-      },
-      {
         title: "Entelect Hack<IT> Community Hackathon 2026",
         description:
             "In this five-hour solo coding challenge, I used Python to manage four simulated gardens on the fictional planet Photospheria, deciding what to plant, where, and when to keep different species alive. After analysing the simulation logs, I discovered that oak trees were outcompeting other plants. By planting roses earlier and delaying the oaks, I nearly tripled my Level 2 score. I finished 76th overall with a combined score of 956,796,064, taking away valuable lessons in root cause analysis, debugging, and experimentation.",
@@ -152,6 +138,20 @@ const categories: MilestoneCategory[] = [
             "Debugging",
             "Problem Solving",
             "Strategy",
+        ],
+      },
+      {
+        title: "Canvathon Africa 2026",
+        description:
+            "As part of a team of three, I helped rebrand Upthink Digital by creating a brand kit, promotional flyer, and website landing page. Coming from software development, this challenge pushed me to explore branding, typography, colour, and user experience. We didn't win, but I walked away with new skills, a greater appreciation for design, and even more curiosity.",
+        images: [canvathon],
+        tags: [
+            "Brand Identity",
+            "UI/UX Design",
+            "Typography",
+            "Web Design",
+            "Teamwork",
+            "Creativity",
         ],
       },
       {
