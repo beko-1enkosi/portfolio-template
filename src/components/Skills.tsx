@@ -1,30 +1,12 @@
-import { useEffect, useRef, useState } from "react";
 import {
-  ArrowUpRight,
-  BrainCircuit,
-  CheckCheck,
-  Code2,
-  Database,
-  GitBranch,
-  Layers3,
-  RefreshCw,
-  Server,
-  Terminal,
-  Workflow,
+  Code2, Database, GitBranch, Layers3, Server, Terminal,
+  ArrowDownRight,
 } from "lucide-react";
 import { FaJava } from "react-icons/fa";
 import {
-  SiApacheairflow,
-  SiDocker,
-  SiFastapi,
-  SiGit,
-  SiGithub,
-  SiJavascript,
-  SiKubernetes,
-  SiPostgresql,
-  SiPython,
-  SiReact,
-  SiTypescript,
+  SiApacheairflow, SiDocker, SiFastapi, SiGit, SiGithub,
+  SiJavascript, SiKubernetes, SiPostgresql, SiPython,
+  SiReact, SiTypescript,
 } from "react-icons/si";
 
 const groups = [
@@ -147,286 +129,122 @@ const groups = [
   },
 ];
 
-const lifecycle = [
-  {
-    title: "requirements",
-    detail: "understand the problem",
-  },
-  {
-    title: "design",
-    detail: "map out the solution",
-  },
-  {
-    title: "development",
-    detail: "bring the idea to life",
-  },
-  {
-    title: "testing",
-    detail: "find and fix the gaps",
-  },
-  {
-    title: "deployment",
-    detail: "share it with the world",
-  },
-  {
-    title: "maintenance",
-    detail: "listen, learn and improve",
-  },
-];
 
-const peopleSkills = [
-  "problem-solving",
-  "analytical thinking",
-  "teamwork",
-  "communication",
-  "adaptability",
-  "accountability",
-  "attention to detail",
-  "time management",
-  "continuous learning",
-  "peer mentoring",
-];
-
+/**
+ * Chapter 01: a clean break from the cream pages.
+ * The story's six technology groups all fit in one responsive grid.
+ * The SDLC and people chapters live in ThinkingJourney, which follows.
+ */
 export default function Skills() {
-  const thinkingRef = useRef<HTMLDivElement | null>(null);
-  const [journeyVisible, setJourneyVisible] = useState(false);
-
-  useEffect(() => {
-    const node = thinkingRef.current;
-    if (!node) return;
-
-    if (!("IntersectionObserver" in window)) {
-      setJourneyVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setJourneyVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="skills"
-      className="relative min-h-screen overflow-hidden border-t border-border bg-background px-5 pb-28 pt-28 sm:px-8"
+      aria-labelledby="tech-stack-heading"
+      className="relative isolate scroll-mt-20 overflow-hidden border-t border-[#36203E] px-5 pb-24 pt-28 text-white sm:px-8 sm:pb-28 md:pt-32"
+      style={{
+        background:
+          "linear-gradient(130deg, #21122D 0%, #392044 40%, #5D3671 74%, #704582 100%)",
+      }}
     >
-      {/* A large cropped headline to keep the visual rhythm of Projects and Milestones. */}
+      {/* The cropped editorial title echoes PROJECTS and MILESTONES. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden">
-        <p className="translate-y-[-38%] whitespace-nowrap text-[19vw] font-semibold leading-none text-muted">
-          SKILLS & STACK
+        <p className="translate-y-[-32%] whitespace-nowrap text-[18vw] font-semibold leading-none text-white/[0.075]">
+          TECH STACK
         </p>
       </div>
+      <div aria-hidden="true" className="pointer-events-none absolute -right-48 top-8 h-[30rem] w-[30rem] rounded-full bg-[#A77FC0]/15 blur-[110px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -left-44 bottom-[-15rem] h-[30rem] w-[30rem] rounded-full bg-[#120A1A]/40 blur-[110px]" />
 
-      <div className="relative mx-auto grid max-w-[1500px] gap-16 pt-[18vw] lg:grid-cols-[minmax(280px,0.65fr)_minmax(0,1.35fr)]">
-        <aside className="h-fit lg:sticky lg:top-28">
-          <p className="text-sm tracking-[0.15em] text-[#704582]">
-            a toolkit & a way of thinking
-          </p>
-
-          <h2 className="mt-4 font-serif text-5xl leading-none sm:text-6xl">
-            the tools.
-            <br />
-            <em className="text-[#704582]">the thinking.</em>
-          </h2>
-
-          <p className="mt-7 max-w-sm leading-relaxed text-muted-foreground">
-            A little look at what I build with, and how I bring ideas to life.
-            Because writing code is only part of the story.
-          </p>
-
-          <div className="mt-10 flex items-center gap-3 text-sm text-[#704582]">
-            <span className="font-hand text-lg">build. test. learn. repeat.</span>
-            <ArrowUpRight aria-hidden="true" className="h-5 w-5 -rotate-12" />
-          </div>
-        </aside>
-
-        <div className="min-w-0">
-          <header className="mb-8">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#704582]">01 / the tools</p>
-            <h3 className="mt-3 font-serif text-4xl sm:text-5xl">things I work with.</h3>
-            <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
-              From Java and backend services to interactive web experiences, data pipelines
-              and shipping applications.
+      <div className="relative mx-auto max-w-[1480px]">
+        <div className="mb-10 grid items-end gap-7 md:mb-14 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-12">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.23em] text-[#DDC2EC]">
+              01 / tech stack
             </p>
-          </header>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {groups.map((group) => {
-              const GroupIcon = group.Icon;
-              return (
-                <article
-                  key={group.title}
-                  className="group flex min-w-0 flex-col rounded-2xl border border-[#DED5DF] bg-[#F9F7F6] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#704582]/60 hover:shadow-[0_12px_30px_rgba(112,69,130,0.09)] sm:p-6"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs tracking-[0.14em] text-[#704582]">{group.number} / stack</span>
-                    <GroupIcon aria-hidden="true" className="h-5 w-5 text-[#704582]" />
-                  </div>
-
-                  <h4 className="mt-4 font-serif text-2xl leading-tight sm:text-3xl">{group.title}</h4>
-                  <p className="mt-1 text-xs text-muted-foreground">{group.note}</p>
-
-                  <div className="mt-6 flex min-h-12 flex-wrap items-center gap-2" aria-label={group.title + " technology logos"}>
-                    {group.logos.map((logo) => {
-                      const Logo = logo.Icon;
-                      return (
-                        <span
-                          key={logo.name}
-                          title={logo.name}
-                          aria-label={logo.name}
-                          className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#E6E0E8] bg-white transition-transform duration-300 group-hover:-rotate-2"
-                        >
-                          <Logo aria-hidden="true" className="h-6 w-6" style={{ color: logo.color }} />
-                        </span>
-                      );
-                    })}
-                  </div>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {group.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-full border border-[#DED1E2] bg-background px-3 py-1.5 text-xs font-medium text-[#704582]"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              );
-            })}
+            <h2 id="tech-stack-heading" className="mt-4 max-w-3xl font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
+              the tools I <em className="text-[#DBB7E9]">build with.</em>
+            </h2>
           </div>
-
-          <div className="mt-24" ref={thinkingRef}>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#704582]">02 / the thinking</p>
-            <h3 className="mt-3 font-serif text-4xl leading-tight sm:text-5xl">
-              tools are only <em className="text-[#704582]">half the story.</em>
-            </h3>
-            <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-              The Software Development Life Cycle helps me take an idea from
-              the first question to a product people can actually use.
+          <div className="max-w-lg md:justify-self-end">
+            <p className="text-base leading-relaxed text-[#F0E5F2]">
+              Java systems, expressive interfaces, data pipelines and everything
+              it takes to turn a curious idea into working software.
             </p>
+            <p className="mt-4 flex items-center gap-3 font-hand text-xl text-[#DEBEE8]">
+              always learning, always building
+              <ArrowDownRight aria-hidden="true" className="h-5 w-5" />
+            </p>
+          </div>
+        </div>
 
-            <div className="mt-9 rounded-2xl border border-[#DED5DF] bg-[#F9F7F6] px-5 py-7 sm:px-7">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <p className="font-serif text-2xl">from idea to iteration.</p>
-                <span className="rounded-full border border-[#DCCFDF] px-3 py-1 text-xs font-medium text-[#704582]">
-                  SDLC
-                </span>
-              </div>
-
-              {/* The hand-drawn line connects the six stages at desktop widths. */}
-              <svg
-                viewBox="0 0 960 90"
-                preserveAspectRatio="none"
-                className="mt-7 hidden h-20 w-full lg:block"
-                aria-hidden="true"
+        {/* On desktop: three across, two down. Tablet: two; phone: one. */}
+        <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          {groups.map((group) => {
+            const CategoryIcon = group.Icon;
+            return (
+              <article
+                key={group.title}
+                className="group flex h-full min-w-0 flex-col rounded-2xl border border-white/35 bg-[#EEECEF] p-5 text-[#271B2C] shadow-[0_18px_45px_rgba(17,6,25,0.11)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[#DBB7E9] hover:shadow-[0_22px_50px_rgba(17,6,25,0.22)] motion-reduce:transform-none sm:p-6"
               >
-                <path
-                  d="M80 45 C130 -12 190 102 240 45 S350 -12 400 45 S510 102 560 45 S670 -12 720 45 S830 102 880 45"
-                  fill="none"
-                  stroke="#DCCFDF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M80 45 C130 -12 190 102 240 45 S350 -12 400 45 S510 102 560 45 S670 -12 720 45 S830 102 880 45"
-                  fill="none"
-                  stroke="#252025"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  pathLength={1}
-                  className="transition-[stroke-dashoffset] duration-[1800ms] ease-out motion-reduce:transition-none"
-                  style={{ strokeDasharray: 1, strokeDashoffset: journeyVisible ? 0 : 1 }}
-                />
-                {[80, 240, 400, 560, 720, 880].map((x, index) => (
-                  <circle key={x} cx={x} cy="45" r="8" fill={journeyVisible ? "#704582" : "#F9F7F6"} stroke="#704582" strokeWidth="3">
-                    <title>{lifecycle[index]!.title}</title>
-                  </circle>
-                ))}
-              </svg>
-
-              <ol className="relative mt-6 grid gap-3 sm:grid-cols-2 lg:mt-3 lg:grid-cols-6">
-                {lifecycle.map((step, index) => (
-                  <li
-                    key={step.title}
-                    className={
-                      "relative rounded-xl border border-[#E8E2E8] bg-white p-3 transition-[opacity,transform] duration-700 motion-reduce:transition-none motion-reduce:translate-y-0 motion-reduce:opacity-100 " +
-                      (journeyVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0")
-                    }
-                    style={{ transitionDelay: String(index * 100) + "ms" }}
-                  >
-                    <span className="text-xs font-semibold tracking-wide text-[#704582]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p className="mt-2 text-sm font-semibold capitalize">{step.title}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.detail}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <div className="mt-5 flex items-start gap-4 rounded-2xl border border-[#DCCFDF] p-6">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#704582] text-white">
-                <RefreshCw aria-hidden="true" className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="font-serif text-2xl">the Agile mindset.</h4>
-                <p className="mt-2 leading-relaxed text-muted-foreground">
-                  Collaborate, build in iterations, welcome feedback, and keep improving.
-                  Agile practices shape how I work through the lifecycle, rather than being
-                  another step at the end.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-16">
-              <div className="flex items-center gap-3 text-[#704582]">
-                <BrainCircuit aria-hidden="true" className="h-5 w-5" />
-                <p className="text-xs uppercase tracking-[0.2em]">03 / the human side</p>
-              </div>
-              <h3 className="mt-3 font-serif text-3xl sm:text-4xl">
-                good work takes <em className="text-[#704582]">good people skills.</em>
-              </h3>
-              <p className="mt-3 max-w-lg leading-relaxed text-muted-foreground">
-                The curiosity, care and communication that turn individual contributions
-                into something meaningful together.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {peopleSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-[#DCCFDF] px-4 py-2 text-sm font-medium text-[#704582] transition-colors duration-200 hover:bg-[#704582] hover:text-white"
-                  >
-                    {skill}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#704582]">
+                    {group.number} / stack
                   </span>
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-2">
-                  <Workflow aria-hidden="true" className="h-4 w-4 text-[#704582]" />
-                  work with a process
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <CheckCheck aria-hidden="true" className="h-4 w-4 text-[#704582]" />
-                  test what I build
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <ArrowUpRight aria-hidden="true" className="h-4 w-4 text-[#704582]" />
-                  keep learning
-                </span>
-              </div>
-            </div>
-          </div>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-[#704582]">
+                    <CategoryIcon aria-hidden="true" className="h-4 w-4" />
+                  </span>
+                </div>
+
+                <h3 className="mt-5 font-serif text-2xl leading-tight lg:text-[1.85rem]">
+                  {group.title}
+                </h3>
+                <p className="mt-1 text-xs leading-relaxed text-[#665D67]">{group.note}</p>
+
+                <div
+                  aria-label={group.title + " technology logos"}
+                  className="mt-6 flex min-h-11 flex-wrap items-center gap-2"
+                >
+                  {group.logos.map((logo) => {
+                    const Logo = logo.Icon;
+                    return (
+                      <span
+                        key={logo.name}
+                        title={logo.name}
+                        aria-label={logo.name}
+                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#DDD6E0] bg-white shadow-sm transition-transform duration-300 group-hover:-rotate-2 motion-reduce:transform-none"
+                      >
+                        <Logo aria-hidden="true" className="h-6 w-6" style={{ color: logo.color }} />
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-[#D2C5D7] bg-white/70 px-3 py-1.5 text-xs font-medium leading-tight text-[#684276]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/25 pt-7">
+          <p className="font-hand text-xl text-[#E5CEE9]">
+            but tools are only half the story...
+          </p>
+          <a
+            href="#thinking"
+            className="inline-flex items-center gap-2 rounded-full border border-white/50 px-5 py-3 text-sm text-white transition-colors hover:bg-white hover:text-[#392044]"
+          >
+            follow the thread
+            <ArrowDownRight aria-hidden="true" className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>
