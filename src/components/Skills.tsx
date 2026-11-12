@@ -1,6 +1,5 @@
 import {
   Code2, Database, GitBranch, Layers3, Server, Terminal,
-  ArrowDownRight,
 } from "lucide-react";
 import { FaJava } from "react-icons/fa";
 import {
@@ -130,11 +129,7 @@ const groups = [
 ];
 
 
-/**
- * Chapter 01: a clean break from the cream pages.
- * The story's six technology groups all fit in one responsive grid.
- * The SDLC and people chapters live in ThinkingJourney, which follows.
- */
+/** Six groups, one clean chapter between Milestones and Let's Talk. */
 export default function Skills() {
   return (
     <section
@@ -156,26 +151,14 @@ export default function Skills() {
       <div aria-hidden="true" className="pointer-events-none absolute -left-44 bottom-[-15rem] h-[30rem] w-[30rem] rounded-full bg-[#120A1A]/40 blur-[110px]" />
 
       <div className="relative mx-auto max-w-[1480px]">
-        <div className="mb-10 grid items-end gap-7 md:mb-14 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-12">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.23em] text-[#DDC2EC]">
-              01 / tech stack
-            </p>
-            <h2 id="tech-stack-heading" className="mt-4 max-w-3xl font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
-              the tools I <em className="text-[#DBB7E9]">build with.</em>
-            </h2>
-          </div>
-          <div className="max-w-lg md:justify-self-end">
-            <p className="text-base leading-relaxed text-[#F0E5F2]">
-              Java systems, expressive interfaces, data pipelines and everything
-              it takes to turn a curious idea into working software.
-            </p>
-            <p className="mt-4 flex items-center gap-3 font-hand text-xl text-[#DEBEE8]">
-              always learning, always building
-              <ArrowDownRight aria-hidden="true" className="h-5 w-5" />
-            </p>
-          </div>
-        </div>
+        <header className="mb-10 md:mb-14">
+          <p className="text-xs font-medium uppercase tracking-[0.23em] text-[#DDC2EC]">
+            01 / tech stack
+          </p>
+          <h2 id="tech-stack-heading" className="mt-4 max-w-3xl font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
+            the tools I <em className="text-[#DBB7E9]">build with.</em>
+          </h2>
+        </header>
 
         {/* On desktop: three across, two down. Tablet: two; phone: one. */}
         <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -184,13 +167,13 @@ export default function Skills() {
             return (
               <article
                 key={group.title}
-                className="group flex h-full min-w-0 flex-col rounded-2xl border border-white/35 bg-[#EEECEF] p-5 text-[#271B2C] shadow-[0_18px_45px_rgba(17,6,25,0.11)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[#DBB7E9] hover:shadow-[0_22px_50px_rgba(17,6,25,0.22)] motion-reduce:transform-none sm:p-6"
+                className="group relative z-0 flex h-full min-w-0 flex-col rounded-2xl border border-white/35 bg-[#EEECEF] p-5 text-[#271B2C] shadow-[0_18px_45px_rgba(17,6,25,0.11)] transition-[transform,box-shadow,border-color,background-color] duration-300 ease-out hover:z-10 hover:-translate-y-2 hover:scale-[1.025] hover:border-[#D7B1E4] hover:bg-[#F7F3F9] hover:shadow-[0_28px_65px_rgba(17,6,25,0.36)] motion-reduce:transform-none sm:p-6"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#704582]">
                     {group.number} / stack
                   </span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-[#704582]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-[#704582] transition-[transform,background-color] duration-300 group-hover:rotate-12 group-hover:bg-[#E5D6EA] motion-reduce:transform-none">
                     <CategoryIcon aria-hidden="true" className="h-4 w-4" />
                   </span>
                 </div>
@@ -211,7 +194,7 @@ export default function Skills() {
                         key={logo.name}
                         title={logo.name}
                         aria-label={logo.name}
-                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#DDD6E0] bg-white shadow-sm transition-transform duration-300 group-hover:-rotate-2 motion-reduce:transform-none"
+                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#DDD6E0] bg-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:-rotate-3 motion-reduce:transform-none"
                       >
                         <Logo aria-hidden="true" className="h-6 w-6" style={{ color: logo.color }} />
                       </span>
@@ -234,18 +217,6 @@ export default function Skills() {
           })}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/25 pt-7">
-          <p className="font-hand text-xl text-[#E5CEE9]">
-            but tools are only half the story...
-          </p>
-          <a
-            href="#thinking"
-            className="inline-flex items-center gap-2 rounded-full border border-white/50 px-5 py-3 text-sm text-white transition-colors hover:bg-white hover:text-[#392044]"
-          >
-            follow the thread
-            <ArrowDownRight aria-hidden="true" className="h-4 w-4" />
-          </a>
-        </div>
       </div>
     </section>
   );
