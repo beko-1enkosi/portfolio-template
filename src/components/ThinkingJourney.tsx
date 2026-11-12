@@ -2,12 +2,8 @@ import { useEffect, useRef } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
-  BrainCircuit,
   CheckCheck,
   Code2,
-  HeartHandshake,
-  Lightbulb,
-  MessageCircle,
   MonitorUp,
   PencilRuler,
   RefreshCw,
@@ -138,7 +134,6 @@ export default function ThinkingJourney() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const inkRef = useRef<SVGPathElement | null>(null);
-  const progressRef = useRef(0);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -153,7 +148,6 @@ export default function ThinkingJourney() {
       const viewportHeight = window.innerHeight;
       const distance = Math.max(section.offsetHeight - viewportHeight, 1);
       const target = Math.max(0, Math.min(1, (window.scrollY - section.offsetTop) / distance));
-      progressRef.current = target;
       track.style.transform = "translate3d(-" + (target * 750) + "vw, 0, 0)";
       ink.style.strokeDashoffset = String(1 - Math.min(1, target * 1.04));
       frame = requestAnimationFrame(update);
