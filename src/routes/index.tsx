@@ -14,7 +14,6 @@ import laptop from "@/assets/obj3d-laptop.webp";
 
 import Milestones from "@/components/Milestones";
 import Skills from "@/components/Skills";
-import ThinkingJourney from "@/components/ThinkingJourney";
 
 import airatlasImage from "@/assets/bekolenkosi/projects/airatlas.png";
 import robotWorldsImage from "@/assets/bekolenkosi/projects/robot-worlds.png";
@@ -472,7 +471,6 @@ function Portfolio() {
       <Works filter={filter} setFilter={setFilter} />
       <Milestones />
       <Skills />
-      <ThinkingJourney />
       <OhHi />
       <CuriousCursor visible={scrollReady} />
       <PhoneComment />
