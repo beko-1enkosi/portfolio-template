@@ -407,8 +407,8 @@ function Portfolio() {
             skills
           </button>
           <a
-            href="/cv/thobeka-nkosi-cv.pdf"
-            download="Thobeka-Nkosi-CV.pdf"
+            href="/cv/Thobeka_Thobile_Busisiwe_Nkosi_CV.pdf"
+            download="Thobeka_Thobile_Busisiwe_Nkosi_CV.pdf"
             className="inline-flex items-center justify-center rounded-full bg-[#704582] px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#5C3268] hover:shadow-md"
             data-cursor="take a little piece of my story."
           >
@@ -437,8 +437,8 @@ function Portfolio() {
               skills
             </button>
             <a
-              href="/cv/thobeka-nkosi-cv.pdf"
-              download="Thobeka-Nkosi-CV.pdf"
+              href="/cv/Thobeka_Thobile_Busisiwe_Nkosi_CV.pdf"
+              download="Thobeka_Thobile_Busisiwe_Nkosi_CV.pdf"
               onClick={() => setMenuOpen(false)}
               className="rounded-full bg-[#704582] px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-[#5C3268]"
             >
