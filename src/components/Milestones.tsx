@@ -9,6 +9,9 @@ import kubernetesEssentials from "@/assets/bekolenkosi/milestones/certificates/k
 import scientificPython from "@/assets/bekolenkosi/milestones/certificates/scientific-computing-python.png";
 import genAI from "@/assets/bekolenkosi/milestones/certificates/wethinkcode-genai.png";
 import fullStack from "@/assets/bekolenkosi/milestones/certificates/full-stack-development.png";
+import idc from "@/assets/bekolenkosi/milestones/certificates/idc.png";
+import genAiForProff from "@/assets/bekolenkosi/milestones/certificates/genaiprof.png";  
+
 
 import cisco01 from "@/assets/bekolenkosi/milestones/little-victories/cisco-shebuild-01.jpeg";
 import cisco02 from "@/assets/bekolenkosi/milestones/little-victories/cisco-shebuild-02.jpeg";
@@ -57,6 +60,16 @@ const categories: MilestoneCategory[] = [
         title: "Generative AI for Software Engineers",
         description: "WeThinkCode_",
         images: [genAI],
+      },
+      {
+        title: "IDC Digital Inclusion and Work Readiness",
+        description: "freeCodeCamp",
+        images: [idc],
+      },
+      {
+        title: "Generative AI for Professionals",
+        description: "WeThinkCode_",
+        images: [genAiForProff],
       },
       {
         title: "Scientific Computing with Python",
