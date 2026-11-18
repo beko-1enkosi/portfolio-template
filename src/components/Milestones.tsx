@@ -63,7 +63,7 @@ const categories: MilestoneCategory[] = [
       },
       {
         title: "IDC Digital Inclusion and Work Readiness",
-        description: "freeCodeCamp",
+        description: "WeThinkCode_",
         images: [idc],
       },
       {
