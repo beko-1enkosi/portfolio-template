@@ -22,7 +22,7 @@ import mukuru01 from "@/assets/bekolenkosi/milestones/little-victories/mukuru-sh
 
 import canvathon from "@/assets/bekolenkosi/milestones/showing-up/canvathon.png";
 import entelect from "@/assets/bekolenkosi/milestones/showing-up/entelect.png";
-import udgamBioinformatics from "@/assets/bekolenkosi/milestones/showing-up/udgam-fundamentals-of-bioinformatics.webp";
+import udgamBioinformatics from "@/assets/bekolenkosi/milestones/showing-up/udgam-fundamentals-of-bioinformatics.png";
 import girlcode from "@/assets/bekolenkosi/milestones/showing-up/girlcode-participation.png";
 import jamboree from "@/assets/bekolenkosi/milestones/showing-up/hmw-jamboree.png";
 import monkeyParticipation from "@/assets/bekolenkosi/milestones/showing-up/monkey-river-participation.jpeg";
