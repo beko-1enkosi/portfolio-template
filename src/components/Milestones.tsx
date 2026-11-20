@@ -22,6 +22,7 @@ import mukuru01 from "@/assets/bekolenkosi/milestones/little-victories/mukuru-sh
 
 import canvathon from "@/assets/bekolenkosi/milestones/showing-up/canvathon.png";
 import entelect from "@/assets/bekolenkosi/milestones/showing-up/entelect.png";
+import udgamBioinformatics from "@/assets/bekolenkosi/milestones/showing-up/udgam-fundamentals-of-bioinformatics.webp";
 import girlcode from "@/assets/bekolenkosi/milestones/showing-up/girlcode-participation.png";
 import jamboree from "@/assets/bekolenkosi/milestones/showing-up/hmw-jamboree.png";
 import monkeyParticipation from "@/assets/bekolenkosi/milestones/showing-up/monkey-river-participation.jpeg";
@@ -152,6 +153,13 @@ const categories: MilestoneCategory[] = [
             "Problem Solving",
             "Strategy",
         ],
+      },
+      {
+        title: "Fundamentals of Bioinformatics | UDGAM AI",
+        description:
+          "I participated in Part 2 of the UDGAM AI Weekly Lecture Series, Fundamentals of Bioinformatics, organised by the UDGAM AI & Health Research Center. It was another opportunity to keep exploring the connection between my Life Sciences background and computing.",
+        images: [udgamBioinformatics],
+        tags: ["Bioinformatics", "Life Sciences", "Computational Biology", "Continuous Learning"],
       },
       {
         title: "Canvathon Africa 2026",
